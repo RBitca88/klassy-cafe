@@ -34,6 +34,31 @@ class AdminController extends Controller
         return redirect() -> back();
     }
 
+    public function updateview($id) {
+
+        $data = food::find($id);
+
+        return view("admin.updateview", compact("data"));
+    }
+
+    public function update(Request $req, $id) {
+
+        $data = food::find($id);
+
+        $image = $req -> image;
+        $imagename = time().'.'.$image -> getClientOriginalExtension();
+        $req -> image -> move('foodimage', $imagename);
+
+        $data -> image = $imagename;
+        $data -> title = $req -> title;
+        $data -> price = $req -> price;
+        $data -> description = $req -> description;
+
+        $data -> save();
+
+        return redirect() -> back();
+    }
+
     public function foodmenu() {
 
         $data = food::all();

@@ -30,7 +30,9 @@ Route::post("/uploadfood", [AdminController::class, "upload"]);
 
 Route::get("/deleteuser/{id}", [AdminController::class, "deleteuser"]);
 
+Route::get("/updateview/{id}", [AdminController::class, "updateview"]);
 
+Route::post("/update/{id}", [AdminController::class, "update"]);
 
 
 Route::get("/redirects", [HomeController::class, "redirects"]);
