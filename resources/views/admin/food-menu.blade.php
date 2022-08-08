@@ -32,6 +32,28 @@
                 </div>
                 <button type="submit" class="btn btn-outline-primary">Save</button>
             </form>
+
+            <div>
+                <table bgcolor="black">
+                    <tr>
+                        <th style="padding: 50px">Food Name</th>
+                        <th style="padding: 50px">Price</th>
+                        <th style="padding: 50px">Description</th>
+                        <th style="padding: 50px">Image</th>
+                        <th style="padding: 50px">Action</th>
+                    </tr>
+                    @foreach($data as $data)
+                    <tr align="center">
+                        <td>{{$data->title}}</td>
+                        <td>{{$data->price}}</td>
+                        <td>{{$data->description}}</td>
+                        <td><img height="50px" width="100px" src="/foodimage/{{$data->image}}" alt=""></td>
+                        <td><a href="{{url('/deletemenu', $data->id)}}">Delete</a></td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+
         </div>
 
     </div>
