@@ -8,6 +8,8 @@ use App\Models\User;
 
 use App\Models\Food;
 
+use App\Models\Reservation;
+
 
 class AdminController extends Controller
 {
@@ -82,5 +84,31 @@ class AdminController extends Controller
         $data -> save();
 
         return redirect() -> back();
+    }
+
+    public function reservation(Request $req) {
+
+        $data = new reservation;
+
+        
+        $data -> name = $req -> name;
+        $data -> email = $req -> email;
+        $data -> phone = $req -> phone;
+        $data -> guest = $req -> guest;
+        $data -> date = $req -> date;
+        $data -> time = $req -> time;
+        $data -> message = $req -> message;
+
+
+        $data -> save();
+
+        return redirect() -> back();
+    }
+
+    public function viewreservation() {
+
+        $data = reservation::all();
+
+        return view("admin.admin-reservation", compact("data"));
     }
 }
