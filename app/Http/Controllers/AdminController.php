@@ -10,6 +10,8 @@ use App\Models\Food;
 
 use App\Models\Reservation;
 
+use App\Models\Foodchefs;
+
 
 class AdminController extends Controller
 {
@@ -110,5 +112,27 @@ class AdminController extends Controller
         $data = reservation::all();
 
         return view("admin.admin-reservation", compact("data"));
+    }
+
+    public function viewchef() {
+
+        return view("admin.admin-chef");
+    }
+
+    public function uploadchef(Request $req) {
+
+        $data = new foodchefs;
+
+        $image = $req -> image;
+        $imagename = time().'.'.$image -> getClientOriginalExtension();
+        $req -> image -> move('chefimage', $imagename);
+
+        $data -> name = $req -> name;
+        $data -> speciality = $req -> speciality;
+        $data -> image = $imagename;
+
+        $data -> save();
+
+        return redirect() -> back();
     }
 }
