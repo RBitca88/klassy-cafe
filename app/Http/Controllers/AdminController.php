@@ -1,20 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\User;
-
 use App\Models\Food;
-
 use App\Models\Reservation;
-
 use App\Models\Foodchefs;
 
-
-class AdminController extends Controller
-{
+class AdminController extends Controller {
     public function user() {
 
         $data = user::all();
@@ -92,7 +85,6 @@ class AdminController extends Controller
 
         $data = new reservation;
 
-        
         $data -> name = $req -> name;
         $data -> email = $req -> email;
         $data -> phone = $req -> phone;
@@ -100,7 +92,6 @@ class AdminController extends Controller
         $data -> date = $req -> date;
         $data -> time = $req -> time;
         $data -> message = $req -> message;
-
 
         $data -> save();
 
@@ -115,8 +106,9 @@ class AdminController extends Controller
     }
 
     public function viewchef() {
+        $data = foodchefs::all();
 
-        return view("admin.admin-chef");
+        return view("admin.admin-chef", compact("data"));
     }
 
     public function uploadchef(Request $req) {
@@ -133,6 +125,39 @@ class AdminController extends Controller
 
         $data -> save();
 
+        return redirect() -> back();
+    }
+
+    public function updatechef($id) {
+    
+        $data = foodchefs::find($id);
+
+        return view("admin.updatechef", compact("data"));
+    }
+
+    public function updatefoodchef(Request $req, $id) {
+    
+        $data = foodchefs::find($id);
+        $image = $req -> image;
+        if($image){
+            $imagename = time().'.'.$image -> getClientOriginalExtension();
+            $req -> image -> move('chefimage', $imagename);
+            $data -> image = $imagename;
+        }
+
+        $data -> name = $req -> name;
+        $data -> speciality = $req -> speciality;
+        
+
+        $data -> save();
+
+        return redirect() -> back();
+    }
+
+    public function deletechef($id){
+
+        $data = foodchefs::find($id);
+        $data -> delete();
         return redirect() -> back();
     }
 }
