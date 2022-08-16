@@ -14,10 +14,16 @@ class HomeController extends Controller
 {
     public function index() {
 
-        $data = food::all();
-        $data2 = foodchefs::all();
+        if(Auth::id()){
+            return redirect('redirects');
+        } else {
+            $data = food::all();
+            $data2 = foodchefs::all();
 
-        return view("home", compact('data', 'data2'));
+            return view("home", compact('data', 'data2'));
+        }
+
+        
     }
 
     public function redirects() {
@@ -56,11 +62,17 @@ class HomeController extends Controller
 
     public function showcart(Request $req, $id){
 
-        $count = cart::where('user_id', $id) -> count();
-        $data2 = cart::select('*') -> where('user_id', '=', $id) -> get();
-        $data = cart::where('user_id', $id) -> join('food', 'carts.food_id', '=', 'food.id') -> get();
+        if(Auth::id() == $id){
+            $count = cart::where('user_id', $id) -> count();
+            $data2 = cart::select('*') -> where('user_id', '=', $id) -> get();
+            $data = cart::where('user_id', $id) -> join('food', 'carts.food_id', '=', 'food.id') -> get();
     
-        return view('showcart', compact('count', 'data', 'data2'));
+            return view('showcart', compact('count', 'data', 'data2'));
+        } else {
+            return redirect() -> back();
+        }
+
+        
     }
 
     public function remove($id){

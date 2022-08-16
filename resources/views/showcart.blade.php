@@ -57,6 +57,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
                             <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
+                            <a class="menu-trigger"><span>Menu</span></a>
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -117,9 +118,9 @@ https://templatemo.com/tm-558-klassy-cafe
                             @endif
                             </li>
                         </ul>        
-                        <a class='menu-trigger'>
+                        {{-- <a class='menu-trigger'>
                             <span>Menu</span>
-                        </a>
+                        </a> --}}
                         <!-- ***** Menu End ***** -->
                     </nav>
                 </div>
@@ -160,7 +161,7 @@ https://templatemo.com/tm-558-klassy-cafe
             @endforeach
         </table>
         <div align="center" style="padding: 10px">
-            <button class="btn btn-primary" id="order" type="button">Order Now</button>
+            <button id="order" type="button" style="background-color: blue; padding: 8px; border-radius: 5px">Order Now</button>
         </div>
         <div id="appear" align="center" style="padding: 10px; display: none">
             <div style="padding: 10px">
@@ -177,7 +178,7 @@ https://templatemo.com/tm-558-klassy-cafe
             </div>
             <div style="padding: 10px">
                 <input class="btn btn-outline-success" type="submit" value="Order Confirm">
-                <button id="close" class="btn btn-danger" type="button">Close</button>
+                <button id="close" type="button" style="background-color: red; padding: 8px; border-radius: 5px">Close</button>
             </div>
         </div>
     </form>

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Food;
 use App\Models\Reservation;
@@ -101,9 +102,15 @@ class AdminController extends Controller {
 
     public function viewreservation() {
 
-        $data = reservation::all();
+        if(Auth::id()){
+            $data = reservation::all();
 
-        return view("admin.admin-reservation", compact("data"));
+            return view("admin.admin-reservation", compact("data"));
+        } else {
+            return redirect('login');
+        }
+
+        
     }
 
     public function viewchef() {
