@@ -31,7 +31,7 @@ https://templatemo.com/tm-558-klassy-cafe
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     </head>
     
@@ -162,7 +162,7 @@ https://templatemo.com/tm-558-klassy-cafe
         <div align="center" style="padding: 10px">
             <button class="btn btn-primary" id="order" type="button">Order Now</button>
         </div>
-        <div id="appear" align="center" style="padding: 10px;">
+        <div id="appear" align="center" style="padding: 10px; display: none">
             <div style="padding: 10px">
                 {{-- <label>Name</label> --}}
                 <input type="text" name="name" placeholder="Name">
@@ -183,20 +183,22 @@ https://templatemo.com/tm-558-klassy-cafe
     </form>
     </div>
 
-    <script>
-        // $(#order).click(
-        //     function(){
-        //         $(#appear).show();
-        //     });
-
-            // $(#close).click(
-            // function(){
-            //     $(#appear).hide();
-            // });
-    </script>
+ 
 
         <!-- jQuery -->
         <script src="assets/js/jquery-2.1.0.min.js"></script>
+
+        <script>
+            $('#order').click(
+                function(){
+                    $('#appear').show();
+                });
+    
+                $('#close').click(
+                function(){
+                    $('#appear').hide();
+                });
+        </script>
 
         <!-- Bootstrap -->
         <script src="assets/js/popper.js"></script>
