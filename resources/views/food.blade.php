@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <input type="number" name="quantity" min="1" value="1" style="width: 80px">
-                        <input type="submit" value="Add to Cart">
+                        <input style="background-color: #90be6d; border: none; padding: 3px; width: 155px;" type="submit" value="Add to Cart">
                     </div>
                 </form>
                     @endforeach

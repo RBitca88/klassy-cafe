@@ -39,9 +39,6 @@ Route::post("/orderconfirm", [HomeController::class, "orderconfirm"]);
 Route::get("/orders", [AdminController::class, "orders"]);
 Route::get("/search", [AdminController::class, "search"]);
 
-
-
-
 Route::get("/redirects", [HomeController::class, "redirects"]);
 
 Route::middleware([
