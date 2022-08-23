@@ -16,11 +16,13 @@
                 @csrf
                 <div>
                     <label>Title</label>
-                    <input class="form-control" style="color: white" type="text" name="title" placeholder="Write a title" required>
+                    <input class="form-control" style="color: white" type="text" name="title"
+                    placeholder="Write a title" required>
                 </div>
                 <div>
                     <label>Price</label>
-                    <input class="form-control" style="color: white" type="number" name="price" placeholder="Price" required>
+                    <input class="form-control" style="color: white" type="number" name="price" 
+                    placeholder="Price" required>
                 </div>
                 <div>
                     <label>Image</label>
@@ -28,9 +30,10 @@
                 </div>
                 <div>
                     <label>Description</label>
-                    <input class="form-control" style="color: white" type="text" name="description" placeholder="Description" required>
+                    <input class="form-control" style="color: white" type="text" name="description" 
+                    placeholder="Description" required>
                 </div>
-                <button type="submit" class="btn btn-outline-primary">Save</button>
+                <button type="submit" class="btn btn-outline-primary">Add Product</button>
             </form>
         </div>
 

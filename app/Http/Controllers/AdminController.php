@@ -8,6 +8,7 @@ use App\Models\Food;
 use App\Models\Reservation;
 use App\Models\Foodchefs;
 use App\Models\Order;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller {
     public function user() {
@@ -65,7 +66,7 @@ class AdminController extends Controller {
         return view("admin.food-menu", compact('data'));
     }
 
-    public function upload(Request $req) {
+    public function uploadFood(Request $req) {
 
         $data = new food;
 
@@ -96,6 +97,8 @@ class AdminController extends Controller {
         $data -> message = $req -> message;
 
         $data -> save();
+
+        Alert::success('The request has been sent', 'Soon the administrator will send you an email about the availability of the tables');
 
         return redirect() -> back();
     }

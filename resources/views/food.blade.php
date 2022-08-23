@@ -19,7 +19,7 @@
                         @csrf
                     <div class="item">
                         <div class='card' style="background-image: url('/foodimage/{{$data->image}}')">
-                            <div class="price"><h6>{{$data->price}}</h6></div>
+                            <div class="price"><h6>{{$data->price}}$</h6></div>
                             <div class='info'>
                               <h1 class='title'>{{$data->title}}</h1>
                               <p class='description'>{{$data->description}}</p>
@@ -28,8 +28,8 @@
                               </div>
                             </div>
                         </div>
-                        <input type="number" name="quantity" min="1" value="1" style="width: 80px">
-                        <input style="background-color: #90be6d; border: none; padding: 3px; width: 155px;" type="submit" value="Add to Cart">
+                        <input type="number" name="quantity" min="1" value="1" style="height: 40px; width: 80px">
+                        <input style="background-color: #90be6d; border: none; padding: 3px; height: 40px; width: 155px;" type="submit" value="Add to Cart">
                     </div>
                 </form>
                     @endforeach
