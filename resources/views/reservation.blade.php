@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-lg-6 col-sm-12">
                           <fieldset>
-                          <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" required="">
+                          <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email*" required="">
                         </fieldset>
                         </div>
                         <div class="col-lg-6 col-sm-12">

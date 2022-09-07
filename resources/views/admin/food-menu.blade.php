@@ -11,7 +11,7 @@
     
         @include("admin.nav-bar")
 
-        <div class="container" >
+        <div class="container" style="padding-left: 68px" >
             <form action="{{url('/uploadfood')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div>
@@ -36,6 +36,7 @@
                 <button type="submit" class="btn btn-outline-primary">Add Product</button>
             </form>
         </div>
+        
 
             <div>
                 <table bgcolor="black">
@@ -44,8 +45,8 @@
                         <th style="padding: 50px">Price</th>
                         <th style="padding: 50px">Description</th>
                         <th style="padding: 50px">Image</th>
-                        <th style="padding: 50px">Action</th>
-                        <th style="padding: 50px">Action2</th>
+                        <th style="padding: 10px">Action</th>
+                        <th style="padding: 10px">Action2</th>
                     </tr>
                     @foreach($data as $data)
                     <tr align="center">
@@ -60,9 +61,9 @@
                 </table>
             </div>
 
-        
+        </div>
 
-    </div>
+    
    
     @include("admin.admin-script")
 

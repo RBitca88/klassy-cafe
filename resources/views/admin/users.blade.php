@@ -12,11 +12,11 @@
          @include("admin.nav-bar")
 
          <div style="position: relative; top: 60px; right: -200px">
-            <table bgcolor="grey"; border="3px">
+            <table bgcolor="black"; border="3px">
                 <tr>
-                    <th style="padding: 50px">Name</th>
-                    <th style="padding: 50px">Email</th>
-                    <th style="padding: 50px">Action</th>
+                    <th style="padding: 80px">Name</th>
+                    <th style="padding: 80px">Email</th>
+                    <th style="padding: 80px">Action</th>
                 </tr>
 
                 @foreach($data as $data)

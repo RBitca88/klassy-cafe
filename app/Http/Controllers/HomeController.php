@@ -9,6 +9,7 @@ use App\Models\Food;
 use App\Models\Foodchefs;
 use App\Models\Cart;
 use App\Models\Order;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -30,6 +31,7 @@ class HomeController extends Controller
 
         $data = food::all();
         $data2 = foodchefs::all();
+        $data3 = user::all();
 
         $usertype = Auth::user() -> usert_type;
 
@@ -38,7 +40,9 @@ class HomeController extends Controller
         } else {
             $user_id = Auth::id();
             $count = cart::where('user_id', $user_id) -> count();
-            return view('home', compact('data', 'data2', 'count'));
+            
+            // $email = user::select('email') -> where('user_id', $id) -> get();
+            return view('home', compact('data', 'data2', 'count', 'data3'));
         }
 
     }
@@ -60,23 +64,38 @@ class HomeController extends Controller
         }
     }
 
-    public function showcart(Request $req, $id){
+    // public function showcart(Request $req, $id){
 
-        if(Auth::id() == $id){
-            $count = cart::where('user_id', $id) -> count();
-            $data2 = cart::select('*') -> where('user_id', '=', $id) -> get();
-            $data = cart::where('user_id', $id) -> join('food', 'carts.food_id', '=', 'food.id') -> get();
-    
-            return view('showcart', compact('count', 'data', 'data2'));
-        } else {
-            return redirect() -> back();
-        }
+    //     if(Auth::id() == $id){
+    //         $count = cart::where('user_id', $id) -> count();
+    //         $data2 = cart::select('*') -> where('user_id', '=', $id) -> get();
+    //         $data = cart::where('user_id', $id) -> join('food', 'carts.food_id', '=', 'food.id') -> get();
+            
+    //         // echo($data);
+    //         return view('showcart', compact('count', 'data', 'data2'));
+    //     } else {
+    //         return redirect() -> back();
+    //     }
+
+        public function showcart(Request $req, $id){
+
+            if(Auth::id() == $id){
+                $count = cart::where('user_id', $id) -> count();
+                // $data2 = cart::select('*') -> where('user_id', '=', $id) -> get();
+                // $data = cart::where('user_id', $id) -> join('food', 'carts.food_id', '=', 'food.id') -> get();
+                
+                $data = cart::select('carts.id as cart_id', 'food.title as food_title', 'food.price as food_price','carts.quantity as food_quantity')->
+                where('user_id', $id)->join('food', 'carts.food_id', '=', 'food.id')->get();
+                return view('showcart', compact('count', 'data'));
+            } else {
+                return redirect() -> back();
+            }
 
         
     }
 
     public function remove($id){
-        $data = cart::find($id);
+        $data = cart::findOrFail($id);
         $data ->delete();
 
         return redirect() -> back();
@@ -95,6 +114,7 @@ class HomeController extends Controller
             $data -> address = $req -> address;
             $data -> save();
         }
+        Alert::success('The request has been sent', 'The courier will contact you soon');
         return redirect() -> back();
     }
 }

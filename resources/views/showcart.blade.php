@@ -62,7 +62,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/')}}" class="active">Back to Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
                            	
                         <!-- 
@@ -77,15 +77,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         -->
                             <li class="scroll-to-section"><a href="#menu">Menu</a></li>
                             <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a href="#">Features Page 4</a></li>
-                                </ul>
-                            </li>
+                           
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
                             <li class="scroll-to-section">
@@ -136,7 +128,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 <th style="padding: 50px">Quantity</th>
                 <th style="padding: 50px">Action</th>
             </tr>
-            <form action="{{url('orderconfirm')}}" method="POST">
+            {{-- <form action="{{url('orderconfirm')}}" method="POST">
                 @csrf
             @foreach($data as $data)
             <tr align="center">
@@ -158,7 +150,37 @@ https://templatemo.com/tm-558-klassy-cafe
                 <tr style="position: relative; top: -60px; right: -520px">
                     <td><a href="{{url('/remove', $data2->id)}}" class="btn btn-warning">Remove</a></td>
                 </tr>
+            @endforeach --}}
+
+            <form action="{{url('orderconfirm')}}" method="POST">
+                @csrf
+            @foreach($data as $data)
+            <tr align="center">
+                <td>
+                    <input type="text" name="foodname[]" value="{{$data->food_title}}" hidden>
+                    {{$data->food_title}}
+                </td>
+                <td>
+                    <input type="text" name="price[]" value="{{$data->food_price}}" hidden>
+                    {{$data->food_price}}$
+                </td>
+                <td>
+                    <input type="text" name="quantity[]" value="{{$data->food_quantity}}" hidden>
+                    {{$data->food_quantity}}
+                </td>  
+                <td>
+                    <a href="{{url('/remove', $data->cart_id)}}" class="btn btn-warning">Remove</a>
+                </td>
+            </tr>
             @endforeach
+            {{-- @foreach ($data2 as $data2)
+                <tr style="position: relative; top: -60px; right: -520px">
+                    <td>
+                        <a href="{{url('/remove', $data2->id)}}" class="btn btn-warning">Remove</a>
+                    </td>
+                </tr>
+            @endforeach --}}
+
         </table>
         <div align="center" style="padding: 10px">
             <button id="order" type="button" style="background-color: #90be6d; padding: 8px; border-radius: 5px">Order Now</button>
