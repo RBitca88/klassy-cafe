@@ -22,6 +22,15 @@
                 <label>Price</label>
                 <input class="form-control" style="color: white" type="number" name="price" value="{{$data->price}}" required>
             </div>
+            <label for="">Currency</label>
+            <div style="background-color: #2a3038">
+                {{-- <label>Currency:</label> --}}
+                <select name="currency" id="" style="background-color: #2a3038; border: none; width: 100%">
+                    <option value="€">€</option>
+                    <option value="$">$</option>
+                    <option value="MDL">MDL</option>
+                </select>
+            </div>
             <div>
                 <label>Description</label>
                 <input class="form-control" style="color: white" type="text" name="description" value="{{$data->description}}" required>
@@ -32,7 +41,7 @@
             </div>
             <div>
                 <label>New Image</label>
-                <input class="form-control" type="file" name="image" required>
+                <input class="form-control" style="color: white" type="file" name="image" required>
             </div>
             <button type="submit" class="btn btn-outline-primary">Save</button>
         </form>

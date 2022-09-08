@@ -36,6 +36,7 @@ https://templatemo.com/tm-558-klassy-cafe
     </head>
     
     <body>
+        @include('sweetalert::alert')
     
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
@@ -63,7 +64,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="{{url('/')}}" class="active">Back to Home</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
+                            {{-- <li class="scroll-to-section"><a href="#about">About</a></li> --}}
                            	
                         <!-- 
                             <li class="submenu">
@@ -75,11 +76,11 @@ https://templatemo.com/tm-558-klassy-cafe
                                 </ul>
                             </li>
                         -->
-                            <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
+                            {{-- <li class="scroll-to-section"><a href="#menu">Menu</a></li> --}}
+                            {{-- <li class="scroll-to-section"><a href="#chefs">Chefs</a></li>  --}}
                            
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
+                            {{-- <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li>  --}}
                             <li class="scroll-to-section">
                                 @auth
                                 <a href="{{url('/showcart', Auth::user()->id)}}">
@@ -162,7 +163,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 </td>
                 <td>
                     <input type="text" name="price[]" value="{{$data->food_price}}" hidden>
-                    {{$data->food_price}}$
+                    {{$data->food_price}}{{$data->food_currency}}
                 </td>
                 <td>
                     <input type="text" name="quantity[]" value="{{$data->food_quantity}}" hidden>

@@ -19,7 +19,7 @@
                         @csrf
                     <div class="item">
                         <div class='card' style="background-image: url('/foodimage/{{$data->image}}')">
-                            <div class="price"><h6>{{$data->price}}$</h6></div>
+                            <div class="price"><h6>{{$data->price}}{{$data->currency}}</h6></div>
                             <div class='info'>
                               <h1 class='title'>{{$data->title}}</h1>
                               <p class='description'>{{$data->description}}</p>

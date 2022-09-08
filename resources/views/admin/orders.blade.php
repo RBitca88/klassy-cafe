@@ -19,7 +19,7 @@
             <input type="submit" value="Search" style="padding: 8px; color: white; background-color: green">
         </form>
 
-        <div style="position: relative; top: 70px; right: -150;">
+        <div style="position: relative; top: 20px; right: -150;">
             <table bgcolor="black" border="3px">
                 <tr>
                     <th style="padding: 50px">Name</th>
@@ -28,7 +28,7 @@
                     <th style="padding: 50px">Food Name</th>
                     <th style="padding: 50px">Price</th>
                     <th style="padding: 50px">Quantity</th>
-                    <th style="padding: 50px">Total Price</th>
+                    <th style="padding: 50px">Total</th>
                 </tr>
     
                 @foreach($data as $data)
@@ -37,9 +37,9 @@
                     <td>{{$data->phone}}</td>
                     <td>{{$data->address}}</td>
                     <td>{{$data->foodname}}</td>
-                    <td>{{$data->price}}$</td>
+                    <td>{{$data->price}}</td>
                     <td>{{$data->quantity}}</td>
-                    <td>{{$data->price * $data->quantity}}$</td>
+                    <td>{{$data->price * $data->quantity}}</td>
                 </tr>
                 @endforeach
             </table>

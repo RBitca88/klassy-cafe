@@ -52,6 +52,7 @@ class AdminController extends Controller {
         $data -> image = $imagename;
         $data -> title = $req -> title;
         $data -> price = $req -> price;
+        $data -> currency = $req -> currency;
         $data -> description = $req -> description;
 
         $data -> save();
@@ -77,6 +78,7 @@ class AdminController extends Controller {
         $data -> image = $imagename;
         $data -> title = $req -> title;
         $data -> price = $req -> price;
+        $data -> currency = $req -> currency;
         $data -> description = $req -> description;
 
         $data -> save();
@@ -98,7 +100,7 @@ class AdminController extends Controller {
 
         $data -> save();
 
-        Alert::success('The request has been sent', 'Soon the administrator will send you an email about the availability of the tables');
+        Alert::success('The request has been sent', 'Soon you wil get an answer by email or by phone call about the availability of the tables');
 
         return redirect() -> back();
     }

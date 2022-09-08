@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Food;
 use App\Models\Foodchefs;
@@ -20,7 +21,7 @@ class HomeController extends Controller
         } else {
             $data = food::all();
             $data2 = foodchefs::all();
-
+          
             return view("home", compact('data', 'data2'));
         }
 
@@ -31,7 +32,6 @@ class HomeController extends Controller
 
         $data = food::all();
         $data2 = foodchefs::all();
-        $data3 = user::all();
 
         $usertype = Auth::user() -> usert_type;
 
@@ -40,9 +40,8 @@ class HomeController extends Controller
         } else {
             $user_id = Auth::id();
             $count = cart::where('user_id', $user_id) -> count();
-            
-            // $email = user::select('email') -> where('user_id', $id) -> get();
-            return view('home', compact('data', 'data2', 'count', 'data3'));
+          
+            return view('home', compact('data', 'data2', 'count'));
         }
 
     }
@@ -84,7 +83,7 @@ class HomeController extends Controller
                 // $data2 = cart::select('*') -> where('user_id', '=', $id) -> get();
                 // $data = cart::where('user_id', $id) -> join('food', 'carts.food_id', '=', 'food.id') -> get();
                 
-                $data = cart::select('carts.id as cart_id', 'food.title as food_title', 'food.price as food_price','carts.quantity as food_quantity')->
+                $data = cart::select('carts.id as cart_id', 'food.title as food_title', 'food.price as food_price','carts.quantity as food_quantity', 'food.currency as food_currency')->
                 where('user_id', $id)->join('food', 'carts.food_id', '=', 'food.id')->get();
                 return view('showcart', compact('count', 'data'));
             } else {
@@ -102,6 +101,12 @@ class HomeController extends Controller
     }
 
     public function orderconfirm(Request $req){
+        // $currency = DB::table('food')
+        //     ->select('currency')
+        //     ->get();
+
+        //     $string=implode(',', json_decode($currency, true));
+        //  json_decode($currency, true);    
 
         foreach($req->foodname as $key=>$foodname)
         {

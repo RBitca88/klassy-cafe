@@ -24,6 +24,15 @@
                     <input class="form-control" style="color: white" type="number" name="price" 
                     placeholder="Price" required>
                 </div>
+                <label for="">Currency</label>
+                <div style="background-color: #2a3038">
+                    {{-- <label>Currency:</label> --}}
+                    <select name="currency" id="" style="background-color: #2a3038; border: none; width: 100%">
+                        <option value="€">€</option>
+                        <option value="$">$</option>
+                        <option value="MDL">MDL</option>
+                    </select>
+                </div>
                 <div>
                     <label>Image</label>
                     <input class="form-control" type="file" name="image" required>
@@ -51,7 +60,7 @@
                     @foreach($data as $data)
                     <tr align="center">
                         <td>{{$data->title}}</td>
-                        <td>{{$data->price}}</td>
+                        <td>{{$data->price}}{{$data->currency}}</td>
                         <td>{{$data->description}}</td>
                         <td><img height="50px" width="100px" src="/foodimage/{{$data->image}}" alt=""></td>
                         <td><a href="{{url('/deletemenu', $data->id)}}">Delete</a></td>
